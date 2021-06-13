@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./插件/jquery.fullPage.css">
+  <link rel="stylesheet" href="./bootstrap-3.4.1-dist/css/bootstrap.min.css">
+  <style>
+    .section {
+      height: 100vh;
+      width: 100%;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      margin-top: 0;
+      padding-top: 20px;
+    }
+
+    #fullpage>div:nth-of-type(1) {
+      background: pink;
+    }
+
+    #fullpage>div:nth-of-type(2) {
+      background: red;
+      font-size: 30vh;
+    }
+
+    #fullpage>div:nth-of-type(3) {
+      background: blue;
+      font-size: 30vh;
+    }
+
+    #fullpage>div:nth-of-type(4) {
+      background: green;
+      font-size: 30vh;
+    }
+
+    #fullpage>div:nth-of-type(5) {
+      background: purple;
+      font-size: 30vh;
+    }
+
+    #fullpage>div:nth-of-type(6) {
+      background: brown;
+      font-size: 30vh;
+    }
+
+    #fullpage>div:nth-of-type(7) {
+      background: gold;
+      font-size: 30vh;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      z-index: 9999;
+      width: 100%;
+      background: black;
+    }
+
+    .nav li .ac {
+      background: white;
+    }
+
+    .carousel {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .carousel .item {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .carousel .item img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Web前端个人主页简介</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#page1">广告栏目</a></li>
+          <li><a href="#page2">基本信息</a></li>
+          <li><a href="#page3">技术栈</a></li>
+          <li><a href="#page4">项目经验</a></li>
+          <li><a href="#page5">工作经历</a></li>
+          <li><a href="#page6">个人评价</a></li>
+          <li><a href="#page7">个人期望</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div id="fullpage">
+
+
+    <div class="section">
+      <div id="carousel-example-generic" data-interval="1000" data-pause="null" class="carousel slide"
+        data-ride="carousel">
+        <!-- 数字导航 -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+
+        <!-- 图片 -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="./images/1.jpg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="./images/2.jpeg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="./images/3.jpeg" alt="...">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+
+        <!-- 左右按钮 -->
+        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">基本信息</div>
+    <div class="section">技术栈</div>
+    <div class="section">项目经验</div>
+    <div class="section">工作经历</div>
+    <div class="section">个人评价</div>
+    <div class="section">个人期望</div>
+  </div>
+  <script src="./bootstrap-3.4.1-dist/js/jquery.min.js"></script>
+  <script src="./插件/jquery.easing.1.3.js"></script>
+  <script src="./插件/jquery.fullPage.min.js"></script>
+  <script src="./bootstrap-3.4.1-dist/js/bootstrap.js"></script>
+  <script>
+    $(function () {
+      // $('#fullpage').fullpage();
+      $.fn.fullpage({
+        anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7'],
+        navigation: true,
+        loopBottom: true,
+        loopTop: true,
+        onLeave: function (index, nextIndex, direction) {
+          $(".nav a").eq(index - 1).removeClass("ac");
+        },
+        afterLoad: function (anchorLink, index) {
+          $(".nav a").eq(index - 1).addClass("ac");
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>
